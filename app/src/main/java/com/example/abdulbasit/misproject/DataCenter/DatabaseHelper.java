@@ -105,4 +105,40 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return values;
 
     }
+
+    //DELETE
+
+
+    // QUEERY NUMBER SE KARNA
+
+    public void deleteUser(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_ANSWERS, KEY_ANS_ID + "= ?", new String[]{id});
+    }
+
+
+
+    // UPDATE
+
+
+    public Contact updateUser(Contact user, String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = KEY_ID + " = ?";
+        String[] selectionArgs = {String.valueOf(id)};
+        db.update(TABLE_USERS, updateUserContentValues(user), selection, selectionArgs);
+        db.close();
+        return user;
+    }
+    // add id and number below add refactor above code
+
+    private ContentValues updateUserContentValues(User user) {
+        ContentValues values = new ContentValues();
+        if (!Utilities.isEmptyOrNull(user.getName())) {
+            values.put(KEY_NAME, user.getName());
+        }
+        if (!Utilities.isEmptyOrNull(user.getEmail())) {
+            values.put(KEY_EMAIL, user.getEmail());
+        }
+        return values;
+    }
 }

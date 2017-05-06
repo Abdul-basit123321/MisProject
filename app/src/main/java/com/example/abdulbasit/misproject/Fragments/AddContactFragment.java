@@ -64,9 +64,10 @@ public class AddContactFragment extends BaseFragment  implements View.OnClickLis
             userToStore.setName(etName.getText().toString());
             userToStore.setNumber(etNumber.getText().toString());
             getHomeActivity().getDbHelper().insertUser(userToStore);
+
             List<Contact> list = new ArrayList<>();
             list = getHomeActivity().getDbHelper().getAllUsers();
-            
+
 
 
         }
