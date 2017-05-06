@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.example.abdulbasit.misproject.Entities.User;
+import com.example.abdulbasit.misproject.Helper.Utilities;
 
 /**
  * Created by Abdul basit on 5/6/2017.
@@ -24,10 +25,17 @@ public class PreferenceHelper {
     public void saveUserCredentials(User user) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor values = preferences.edit();
-        values.putString(KEY_EMAIL,user.getUserName());
+        values.putString(KEY_USER,user.getUserName());
         values.putString(KEY_EMAIL,user.getEmail());
         values.putString(KEY_PASSWORD, user.getPassword());
         values.apply();
+    }
+
+    public boolean isUserLogin() {
+        if (Utilities.isEmptyOrNull(getValueByKey(KEY_USER))) {
+            return false;
+        }
+        return true;
     }
 
     public String getValueByKey(String key) {

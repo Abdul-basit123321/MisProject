@@ -19,21 +19,13 @@ public class SplashScreen extends BaseActivity {
         setContentView(R.layout.splash);
 
         new Handler().postDelayed(new Runnable() {
-
-            /*
-             * Showing splash screen with a timer. This will be useful when you
-             * want to show case your app logo / company
-             */
-
             @Override
             public void run() {
-                // This method will be executed once the timer is over
-                // Start your app main activity
-                Intent i = new Intent(SplashScreen.this, LoginScreen.class);
-                startActivity(i);
-
-                // close this activity
-                finish();
+                if (getPrefHelper().isUserLogin()){
+                    changeActivity(HomeActivity.class,true);
+                }else{
+                    changeActivity(LoginScreen.class,true);
+                }
             }
         }, SPLASH_TIME_OUT);
     }
