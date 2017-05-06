@@ -12,9 +12,9 @@ import com.example.abdulbasit.misproject.R;
  * Created by Abdul basit on 5/6/2017.
  */
 
-public class LoginScreen extends BaseActivity implements View.OnClickListener {
-    EditText etEmail,etPassword;
-    Button btnLogin,btnSignup;
+public class SignUpScreen extends BaseActivity implements View.OnClickListener  {
+    EditText etEmail,etPassword,etUsername;
+    Button btnSignup;
 
     @Override
     public int getDockFrameLayoutId() {
@@ -24,32 +24,25 @@ public class LoginScreen extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        InitializeVariable();
-        setListener();
+        setContentView(R.layout.activity_sign_up);
     }
 
     private void setListener() {
-        btnLogin.setOnClickListener(this);
         btnSignup.setOnClickListener(this);
     }
 
     private void InitializeVariable() {
-        etEmail = (EditText) findViewById(R.id.etUsername);
+        etUsername = (EditText) findViewById(R.id.etUsername);
+        etEmail = (EditText) findViewById(R.id.etEmail);
         etPassword = (EditText) findViewById(R.id.etPassword);
-        btnLogin = (Button) findViewById(R.id.btnLogin);
         btnSignup = (Button) findViewById(R.id.btnSign);
     }
-
 
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        if(id == R.id.btnLogin){
-            changeActivity(HomeActivity.class,true);
-        }
-        else if(id == R.id.btnSign){
-            changeActivity(SignUpScreen.class,false);
+        if(id == R.id.btnSign){
+
         }
     }
 }
