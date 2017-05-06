@@ -28,6 +28,8 @@ public class SignUpScreen extends BaseActivity implements View.OnClickListener  
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        InitializeVariable();
+        setListener();
     }
 
     private void setListener() {
@@ -53,6 +55,7 @@ public class SignUpScreen extends BaseActivity implements View.OnClickListener  
                     user.setPassword(etPassword.getText().toString());
                     user.setUserName(etUsername.getText().toString());
                     preferenceHelper.saveUserCredentials(user);
+                    changeActivity(HomeActivity.class,true);
                 }else {
                     Toast.makeText(this, "Email address is invalid", Toast.LENGTH_SHORT).show();
                 }

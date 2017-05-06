@@ -10,13 +10,13 @@
         android:theme="@style/AppTheme" >
         <activity android:name=".Activities.HomeActivity" ></activity>
         <activity android:name=".Activities.SplashScreen">
-
-        </activity>
-        <activity android:name=".Activities.LoginScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Activities.LoginScreen">
+
         </activity>
         <activity android:name=".Activities.SignUpScreen"/>
     </application>
