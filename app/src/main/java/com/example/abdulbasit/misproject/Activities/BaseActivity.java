@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.abdulbasit.misproject.Constants.AppConstants;
+import com.example.abdulbasit.misproject.DataCenter.DatabaseHelper;
 import com.example.abdulbasit.misproject.DataCenter.PreferenceHelper;
 import com.example.abdulbasit.misproject.Fragments.BaseFragment;
 import com.example.abdulbasit.misproject.R;
@@ -15,7 +16,7 @@ import com.example.abdulbasit.misproject.R;
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
-
+    DatabaseHelper databaseHelper;
     PreferenceHelper preferenceHelper;
 
     public abstract int getDockFrameLayoutId();
@@ -32,10 +33,15 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private void InitializeVariable(){
         preferenceHelper = new PreferenceHelper(this);
+        databaseHelper = new DatabaseHelper(this);
     }
 
     public PreferenceHelper getPrefHelper() {
         return preferenceHelper;
+    }
+
+    public DatabaseHelper getDbHelper() {
+        return databaseHelper;
     }
 
 
