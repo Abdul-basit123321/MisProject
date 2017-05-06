@@ -26,13 +26,13 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .commit();
     }
 
-    public <T> void changeActivity(Class<T> cls, Bundle data) {
+    public <T> void changeActivity(Class<T> cls,boolean isFinish) {
         Intent resultIntent = new Intent(this, cls);
-        if (data != null){resultIntent.putExtras(data);}
         resultIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(resultIntent);
-        finish();
-
+        if (isFinish){
+            finish();
+        }
     }
 
 
