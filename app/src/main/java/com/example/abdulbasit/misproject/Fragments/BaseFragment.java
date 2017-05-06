@@ -38,7 +38,7 @@ public class BaseFragment extends Fragment {
         super.onPause();
     }
 
-    protected HomeActivity getNavigationActivity() {
+    protected HomeActivity getHomeActivity() {
         return (HomeActivity) getActivity();
     }
 }
