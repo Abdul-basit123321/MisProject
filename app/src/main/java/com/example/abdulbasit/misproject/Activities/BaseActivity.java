@@ -2,9 +2,11 @@ package com.example.abdulbasit.misproject.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.abdulbasit.misproject.Constants.AppConstants;
+import com.example.abdulbasit.misproject.DataCenter.PreferenceHelper;
 import com.example.abdulbasit.misproject.Fragments.BaseFragment;
 import com.example.abdulbasit.misproject.R;
 
@@ -14,10 +16,29 @@ import com.example.abdulbasit.misproject.R;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+    PreferenceHelper preferenceHelper;
+
     public abstract int getDockFrameLayoutId();
 
     //public PreferencesHelper prefHelper;
    // public DatabaseHelper dbHelper;
+
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        InitializeVariable();
+    }
+
+    private void InitializeVariable(){
+        preferenceHelper = new PreferenceHelper(this);
+    }
+
+    public PreferenceHelper getPrefHelper() {
+        return preferenceHelper;
+    }
+
+
 
     public void addFragmentToStack(BaseFragment fragment) {
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
