@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.abdulbasit.misproject.Entities.Contact;
 import com.example.abdulbasit.misproject.Entities.User;
@@ -64,10 +65,8 @@ public class AddContactFragment extends BaseFragment  implements View.OnClickLis
             userToStore.setName(etName.getText().toString());
             userToStore.setNumber(etNumber.getText().toString());
             getHomeActivity().getDbHelper().insertUser(userToStore);
-
-            List<Contact> list = new ArrayList<>();
-            list = getHomeActivity().getDbHelper().getAllUsers();
-
+            Toast.makeText(getContext(), "Contact added successfully", Toast.LENGTH_SHORT).show();
+            getHomeActivity().addFragmentToStack(new HomeFragment());
 
 
         }

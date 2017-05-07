@@ -12,16 +12,18 @@ import com.example.abdulbasit.misproject.Entities.Contact;
 import com.example.abdulbasit.misproject.R;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Ashar on 5/6/2017.
  */
 
 public class CustomAdapter extends ArrayAdapter<Contact>{
-    private ArrayList<Contact> dataSet;
+    private List<Contact> dataSet;
     Context mContext;
 
-    public CustomAdapter(ArrayList<Contact> data, Context context) {
+    public CustomAdapter(List<Contact> data, Context context) {
         super(context, R.layout.row_list, data);
         this.dataSet = data;
         this.mContext=context;
@@ -61,6 +63,22 @@ public class CustomAdapter extends ArrayAdapter<Contact>{
         viewHolder.person_Image.setTag(position);
         // Return the completed view to render on screen
         return convertView;
+    }
+
+    public void filter(String charText,List<Contact> dataList) {
+        charText = charText.toLowerCase(Locale.getDefault());
+        dataSet.clear();
+        if (charText.length() == 0) {
+            dataSet.addAll(dataList);
+        }
+        else{
+            for (Contact contact : dataList){
+                if (contact.getName().toLowerCase(Locale.getDefault()).contains(charText)){
+                    dataSet.add(contact);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 
 

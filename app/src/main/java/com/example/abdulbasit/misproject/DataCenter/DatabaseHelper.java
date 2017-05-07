@@ -106,22 +106,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    //DELETE
-
-
-    // QUEERY NUMBER SE KARNA
-
-   /* public void deleteUser(String id){
+    public void deleteUser(String id){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_ANSWERS, KEY_ANS_ID + "= ?", new String[]{id});
+        db.delete(TABLE_USERS, KEY_ID + "= ?", new String[]{id});
     }
-*/
 
 
-    // UPDATE
 
 
-   /* public Contact updateUser(Contact user, String id) {
+
+    public Contact updateUser(Contact user, String id) {
         SQLiteDatabase db = this.getWritableDatabase();
         String selection = KEY_ID + " = ?";
         String[] selectionArgs = {String.valueOf(id)};
@@ -131,7 +125,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     // add id and number below add refactor above code
 
-    private ContentValues updateUserContentValues(User user) {
+    private ContentValues updateUserContentValues(Contact user) {
         ContentValues values = new ContentValues();
         if (!Utilities.isEmptyOrNull(user.getName())) {
             values.put(KEY_NAME, user.getName());
@@ -139,6 +133,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (!Utilities.isEmptyOrNull(user.getEmail())) {
             values.put(KEY_EMAIL, user.getEmail());
         }
+        if (!Utilities.isEmptyOrNull(user.getNumber())) {
+            values.put(KEY_NUMBER, user.getNumber());
+        }
         return values;
-    }*/
+    }
 }
