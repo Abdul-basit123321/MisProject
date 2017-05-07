@@ -111,17 +111,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // QUEERY NUMBER SE KARNA
 
-    public void deleteUser(String id){
+   /* public void deleteUser(String id){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_ANSWERS, KEY_ANS_ID + "= ?", new String[]{id});
     }
-
+*/
 
 
     // UPDATE
 
 
-    public Contact updateUser(Contact user, String id) {
+   /* public Contact updateUser(Contact user, String id) {
         SQLiteDatabase db = this.getWritableDatabase();
         String selection = KEY_ID + " = ?";
         String[] selectionArgs = {String.valueOf(id)};
@@ -140,5 +140,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(KEY_EMAIL, user.getEmail());
         }
         return values;
-    }
+    }*/
 }
