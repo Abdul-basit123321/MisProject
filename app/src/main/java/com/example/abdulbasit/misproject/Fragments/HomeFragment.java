@@ -9,9 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.example.abdulbasit.misproject.Activities.LoginScreen;
 import com.example.abdulbasit.misproject.Adapters.CustomAdapter;
 import com.example.abdulbasit.misproject.Entities.Contact;
 import com.example.abdulbasit.misproject.R;
@@ -29,6 +31,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     ListView listView;
     CustomAdapter adapter;
     EditText inputSearch;
+    Button btnLogout;
     List<Contact> data;
     FloatingActionButton fab;
 
@@ -48,9 +51,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     private void setListener() {
         fab.setOnClickListener(this);
+        btnLogout.setOnClickListener(this);
     }
 
     private void InitializeVariable() {
+        btnLogout = (Button) parentView.findViewById(R.id.btnLogout);
         listView = (ListView) parentView.findViewById(R.id.listView);
         fab = (FloatingActionButton) parentView.findViewById(R.id.fab);
         data = new ArrayList<>();
@@ -95,6 +100,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         int id = view.getId();
         if(id == R.id.fab){
             getHomeActivity().addFragmentToStack(new AddContactFragment());
+        }
+        else if(id == R.id.btnLogout){
+            getHomeActivity().changeActivity(LoginScreen.class,true);
         }
     }
 

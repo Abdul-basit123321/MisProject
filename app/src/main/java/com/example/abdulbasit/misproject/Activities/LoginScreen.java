@@ -46,7 +46,12 @@ public class LoginScreen extends BaseActivity implements View.OnClickListener {
     public void onClick(View view) {
         int id = view.getId();
         if(id == R.id.btnLogin){
+            if (etEmail.getText().toString().equalsIgnoreCase(getPrefHelper().getValueByKey("KEY_EMAIL")) &&
+                    etPassword.getText().toString().equalsIgnoreCase(getPrefHelper().getValueByKey("KEY_PASSWORD"))){
+
+            }
             changeActivity(HomeActivity.class,true);
+
         }
         else if(id == R.id.btnSign){
             changeActivity(SignUpScreen.class,false);
